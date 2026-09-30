@@ -1,3 +1,4 @@
+class_name Shark
 extends CharacterBody2D
 
 @export var speed: Vector2
@@ -9,8 +10,16 @@ var rebotando := false
 @onready var boca := $boca
 @onready var bocaPos = abs(boca.get_child(0).position.x)
 
+enum estados {
+	bocaCerrada,
+	bocaAbierta,
+	enfermo,
+}
+var estado = estados.bocaCerrada
+@onready var pEstado = estado
+
 func _ready():
-	pass
+	boca.area_entered.connect(morder)
 	
 
 func _process(delta):
@@ -44,4 +53,23 @@ func _physics_process(delta):
 		boca.get_child(0).position.x = bocaPos * dir.x
 		
 		move_and_collide(Vector2(0, velocity.y * delta))
+	
+	if estado == estados.enfermo:
+		sprite.play("enfermo")
+	else:
+		if Input.is_action_pressed("ui_accept") && !rebotando:
+			estado = estados.bocaAbierta
+			sprite.play("morder")
+		else:
+			estado = estados.bocaCerrada
+			sprite.play("default")
+			
+			boca.process_mode = Node.PROCESS_MODE_DISABLED
+			if pEstado == estados.bocaAbierta && !rebotando:
+				boca.process_mode = Node.PROCESS_MODE_INHERIT
+	pEstado = estado
+	
+
+func morder(area: Area2D):
+	print("Mordiendo: " + str(area))
 	

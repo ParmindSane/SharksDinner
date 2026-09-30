@@ -8,13 +8,10 @@ size = Vector2(51, 456.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pk3x"]
 size = Vector2(51, 731)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fworp"]
+size = Vector2(414, 450.00003)
+
 [node name="nivel" type="Node2D" unique_id=292550123]
-
-[node name="shark" parent="." unique_id=1299028078 instance=ExtResource("1_7pk3x")]
-position = Vector2(231, 505)
-
-[node name="Camera2D" type="Camera2D" parent="shark" unique_id=1237651121]
-position_smoothing_enabled = true
 
 [node name="Coso" type="StaticBody2D" parent="." unique_id=1769819424]
 position = Vector2(497.99994, 509.99994)
@@ -60,3 +57,21 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coso4" unique_id=720382514]
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_7pk3x")
+
+[node name="Mordible" type="Area2D" parent="." unique_id=608969946]
+position = Vector2(333, 413)
+rotation = 1.5707964
+collision_layer = 256
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mordible" unique_id=1657702555]
+position = Vector2(-33, -1)
+shape = SubResource("RectangleShape2D_fworp")
+debug_color = Color(0.65457684, 0.5179122, 0, 0.41960785)
+
+[node name="shark" parent="." unique_id=1299028078 instance=ExtResource("1_7pk3x")]
+position = Vector2(231, 505)
+
+[node name="Camera2D" type="Camera2D" parent="shark" unique_id=1237651121]
+position_smoothing_enabled = true
