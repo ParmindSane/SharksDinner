@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cni0ebq487ep6"]
+
+[ext_resource type="Script" uid="uid://dw1mwxxqk1yj2" path="res://shark/shark.gd" id="1_m6wr1"]
+[ext_resource type="Texture2D" uid="uid://dvnw1inkaaw0c" path="res://shark/assets/shark.png" id="1_s8g2r"]
+[ext_resource type="Texture2D" uid="uid://sqwue0ubrqxq" path="res://shark/assets/shark bocaAbierta.png" id="2_lvqlo"]
+[ext_resource type="Texture2D" uid="uid://by0nxee8ey3pr" path="res://shark/assets/shark enfermo.png" id="2_ura35"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvqlo"]
+radius = 60.0
+height = 176.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qe4n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s8g2r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ura35")
+}],
+"loop": 1,
+"name": &"enfermo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lvqlo")
+}],
+"loop": 1,
+"name": &"morder",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sau36"]
+radius = 33.0
+
+[node name="shark" type="CharacterBody2D" unique_id=873478991]
+collision_mask = 65536
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_m6wr1")
+speed = Vector2(200, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847022693]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_lvqlo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2087930465]
+sprite_frames = SubResource("SpriteFrames_qe4n8")
+autoplay = "default"
+
+[node name="boca" type="Area2D" parent="." unique_id=129636635]
+collision_layer = 2
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boca" unique_id=236291367]
+position = Vector2(54, 8)
+shape = SubResource("CircleShape2D_sau36")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Label" type="Label" parent="." unique_id=533289346]
+offset_left = -20.0
+offset_top = -87.0
+offset_right = 20.0
+offset_bottom = -64.0
+text = "Vel"

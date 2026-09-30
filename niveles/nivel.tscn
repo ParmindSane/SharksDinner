@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cwaaarvifu3vo"]
+
+[ext_resource type="PackedScene" uid="uid://cni0ebq487ep6" path="res://shark/shark.tscn" id="1_7pk3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
+size = Vector2(51, 456.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pk3x"]
+size = Vector2(51, 731)
+
+[node name="nivel" type="Node2D" unique_id=292550123]
+
+[node name="shark" parent="." unique_id=1299028078 instance=ExtResource("1_7pk3x")]
+position = Vector2(231, 505)
+
+[node name="Camera2D" type="Camera2D" parent="shark" unique_id=1237651121]
+position_smoothing_enabled = true
+
+[node name="Coso" type="StaticBody2D" parent="." unique_id=1769819424]
+position = Vector2(880, 393.99997)
+collision_layer = 65536
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coso" unique_id=2042526020]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="Coso2" type="StaticBody2D" parent="." unique_id=1795155359]
+position = Vector2(40.00006, 413)
+collision_layer = 65536
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coso2" unique_id=1363280666]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="Coso3" type="StaticBody2D" parent="." unique_id=381737816]
+position = Vector2(485, 599)
+rotation = 1.5707964
+collision_layer = 65536
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coso3" unique_id=224756137]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_7pk3x")
+
+[node name="Coso4" type="StaticBody2D" parent="." unique_id=1542615735]
+position = Vector2(485, 166)
+rotation = 1.5707964
+collision_layer = 65536
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coso4" unique_id=720382514]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_7pk3x")
