@@ -17,7 +17,8 @@ position = Vector2(231, 505)
 position_smoothing_enabled = true
 
 [node name="Coso" type="StaticBody2D" parent="." unique_id=1769819424]
-position = Vector2(880, 393.99997)
+position = Vector2(497.99994, 509.99994)
+rotation = 0.89709926
 collision_layer = 65536
 metadata/_edit_group_ = true
 
@@ -25,11 +26,19 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_qe4n8")
 
 [node name="Coso2" type="StaticBody2D" parent="." unique_id=1795155359]
-position = Vector2(40.00006, 413)
+position = Vector2(577, 415.99994)
 collision_layer = 65536
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coso2" unique_id=1363280666]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="Coso5" type="StaticBody2D" parent="." unique_id=1393364792]
+position = Vector2(92, 415.99994)
+collision_layer = 65536
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coso5" unique_id=2111352020]
 shape = SubResource("RectangleShape2D_qe4n8")
 
 [node name="Coso3" type="StaticBody2D" parent="." unique_id=381737816]

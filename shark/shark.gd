@@ -18,9 +18,11 @@ func _process(delta):
 	
 
 func _physics_process(delta):
-	var col = move_and_collide(Vector2(velocity.x * delta, 0))
+	velocity = Vector2(velocity.x, 0)
+	move_and_slide()
 	
-	if col:
+	if is_on_wall():
+		var col = get_last_slide_collision()
 		var normal = col.get_normal()
 		var ang = normal.angle_to(Vector2.UP)
 		if abs(ang) > PI*0.3 && abs(ang) < PI-PI*0.3:
