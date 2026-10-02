@@ -78,6 +78,7 @@ debug_color = Color(0.65457684, 0.5179122, 0, 0.41960785)
 [node name="Fish" parent="Peces" unique_id=527609244 instance=ExtResource("1_fworp")]
 position = Vector2(507, 462)
 motion_mode = 0
+speedMargen = null
 
 [node name="shark" parent="." unique_id=1299028078 instance=ExtResource("1_7pk3x")]
 position = Vector2(231, 505)

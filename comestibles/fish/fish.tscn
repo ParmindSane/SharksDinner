@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dpd13gkjceonr"]
+
+[ext_resource type="PackedScene" uid="uid://bk4555wsf50k8" path="res://comestibles/comestible.tscn" id="1_oxxh8"]
+[ext_resource type="Script" uid="uid://didptr8swyfhb" path="res://comestibles/fish/fish.gd" id="2_ifpkl"]
+
+[node name="Fish" unique_id=527609244 instance=ExtResource("1_oxxh8")]
+script = ExtResource("2_ifpkl")
+speed = Vector2(500, 400)
+speedMargen = Vector2(100, 100)
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1233890505]
+position = Vector2(16, 4)
+
+[node name="CollisionShape2D2" parent="AreaComestible" parent_id_path=PackedInt32Array(1019409345) index="0" unique_id=498076601]
+position = Vector2(16, 4)

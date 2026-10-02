@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bk4555wsf50k8"]
+
+[ext_resource type="Texture2D" uid="uid://8a4wffcjb7g8" path="res://comestibles/fish/assets/fish.png" id="1_coolh"]
+[ext_resource type="Script" uid="uid://8g4ue7ciar3s" path="res://comestibles/comestible.gd" id="1_i6nnr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qe4n8"]
+radius = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sau36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_coolh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tulsa"]
+radius = 20.0
+
+[node name="Comestible" type="CharacterBody2D" unique_id=527609244]
+collision_layer = 256
+collision_mask = 65536
+motion_mode = 1
+script = ExtResource("1_i6nnr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1233890505]
+shape = SubResource("CircleShape2D_qe4n8")
+debug_color = Color(0.6522149, 0.5191298, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=265317653]
+sprite_frames = SubResource("SpriteFrames_sau36")
+
+[node name="AreaComestible" type="Area2D" parent="." unique_id=1019409345]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaComestible" unique_id=498076601]
+shape = SubResource("CircleShape2D_tulsa")
+debug_color = Color(0.6522149, 0.5191298, 0, 0.41960785)
+
+[node name="Label" type="Label" parent="." unique_id=26605432]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vel"
