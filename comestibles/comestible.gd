@@ -4,15 +4,22 @@ extends CharacterBody2D
 @export var speed: Vector2
 @export var speedMargen: Vector2
 
+@onready var sprite := $AnimatedSprite2D
+
+var areasMordibles: Array[AreaMordible]
+
 func _ready():
+	for a in get_tree().get_nodes_in_group("areaMordible"):
+		a.enBocado.connect(enBoca)
+		a.mordido.connect(mordido)
+	
 	var dir = [-1, +1]
 	var dX = dir.pick_random()
 	var dY = dir.pick_random()
 	velocity = getNewVel() * Vector2(dX, dY)
 	
-
-func _process(_delta):
-	$Label.text = str(velocity)
+	if dX < 0:
+		scale.x *= -1
 	
 
 func _physics_process(_delta):
@@ -44,11 +51,20 @@ func choque(_c: KinematicCollision2D):
 	
 func rebotar(_c: KinematicCollision2D):
 	var n = _c.get_normal()
-	velocity = sign(velocity.bounce(n)) * getNewVel()
-	#move_and_collide(_c.get_remainder().bounce(n))
+	var dir = sign(velocity.bounce(n))
+	var pDir = sign(velocity)
+	
+	velocity = dir * getNewVel()
+	
+	if dir.x != pDir.x:
+		scale.x *= -1
 	
 
+func enBoca():
+	pass
+	
 func mordido():
+	print("mordido")
 	morir()
 	
 func morir():

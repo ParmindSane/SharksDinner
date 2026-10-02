@@ -8,7 +8,6 @@ var rebotando := false
 @onready var sprite := $AnimatedSprite2D
 
 @onready var boca := $boca
-@onready var bocaPos = abs(boca.get_child(0).position.x)
 
 enum estados {
 	bocaCerrada,
@@ -19,14 +18,10 @@ var estado = estados.bocaCerrada
 @onready var pEstado = estado
 
 func _ready():
-	boca.area_entered.connect(morder)
+	boca.area_entered.connect(enBocar)
 	
 
-func _process(delta):
-	$Label.text = str(velocity)
-	
-
-func _physics_process(delta):
+func _physics_process(_delta):
 #	Movimiento horizontal
 	velocity = Vector2(velocity.x, 0)
 	move_and_slide()
@@ -43,25 +38,24 @@ func _physics_process(delta):
 			dir.x = -dir.x
 			velocity = Vector2(speed.x/2 * dir.x, 0)
 			
-#			Rebote
-			var resto = Vector2(-col.get_remainder().x/2, 0)
-			move_and_collide(resto)
-			
 #			Momento atontado
 			rebotando = true
 			await get_tree().create_timer(0.5).timeout
 			rebotando = false
+			
+#			Voltear
+			scale.x *= -1
 	
 #	Cuando deja de rebotar...
 	if !rebotando:
 #		Movimiento vertical controlado por input
 		dir.y = Input.get_axis("ui_up", "ui_down")
 		velocity = Vector2(speed.x * dir.x, speed.y * dir.y)
-		move_and_collide(Vector2(0, velocity.y * delta))
+		move_and_collide(Vector2(0, velocity.y * _delta))
 		
 #		Voltear
-		sprite.flip_h = dir.x < 0
-		boca.get_child(0).position.x = bocaPos * dir.x
+		#sprite.flip_h = dir.x < 0
+		#boca.get_child(0).position.x = bocaPos * dir.x
 	
 #	Estar enfermo
 	if estado == estados.enfermo:
@@ -74,20 +68,23 @@ func _physics_process(delta):
 			estado = estados.bocaAbierta
 			boca.process_mode = Node.PROCESS_MODE_INHERIT
 			sprite.play("bocaAbierta")
-			
-#		Cerrar la boca
 		else:
+#			Si acaba de cerrar la boca, come lo que haya cerca
+			if pEstado == estados.bocaAbierta && !rebotando:
+				for n in boca.get_overlapping_areas():
+					morder(n)
+				
+#			Cerrar la boca
 			estado = estados.bocaCerrada
 			boca.process_mode = Node.PROCESS_MODE_DISABLED
 			sprite.play("default")
-			
-#			Si acaba de cerrar la boca, come lo que haya cerca
-			if pEstado == estados.bocaAbierta && !rebotando:
-				pass
-				
+	
 	pEstado = estado
 	
 
-func morder(area: Area2D):
-	print("Mordiendo: " + str(area))
+func enBocar(_a: AreaMordible):
+	_a.enBocar()
+	
+func morder(_a: AreaMordible):
+	_a.morder()
 	
