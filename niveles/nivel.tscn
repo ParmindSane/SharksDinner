@@ -4,55 +4,104 @@
 [ext_resource type="PackedScene" uid="uid://dpd13gkjceonr" path="res://comestibles/fish/fish.tscn" id="1_fworp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
-size = Vector2(51, 456.5)
+size = Vector2(51, 662)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pk3x"]
-size = Vector2(51, 731)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fworp"]
-size = Vector2(414, 450.00003)
+size = Vector2(51, 1161)
 
 [node name="nivel" type="Node2D" unique_id=292550123]
 
 [node name="Escenario" type="Node2D" parent="." unique_id=1239266727]
 
-[node name="Coso" type="StaticBody2D" parent="Escenario" unique_id=1769819424]
-position = Vector2(905, 659)
-rotation = 0.89709926
-collision_layer = 65536
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Coso" unique_id=2042526020]
-shape = SubResource("RectangleShape2D_qe4n8")
-
 [node name="Coso2" type="StaticBody2D" parent="Escenario" unique_id=1795155359]
-position = Vector2(884, 382)
+position = Vector2(1182, 324)
 collision_layer = 65536
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Coso2" unique_id=1363280666]
 shape = SubResource("RectangleShape2D_qe4n8")
 
+[node name="ColorRect" type="ColorRect" parent="Escenario/Coso2/CollisionShape2D" unique_id=557083730]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -333.0
+offset_right = 26.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Coso6" type="StaticBody2D" parent="Escenario" unique_id=1199301157]
+position = Vector2(572, 667)
+collision_layer = 65536
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Coso6" unique_id=129917662]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="ColorRect" type="ColorRect" parent="Escenario/Coso6/CollisionShape2D" unique_id=249755625]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -333.0
+offset_right = 26.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Coso5" type="StaticBody2D" parent="Escenario" unique_id=1393364792]
-position = Vector2(114, 395)
+position = Vector2(-31, 341)
 collision_layer = 65536
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Coso5" unique_id=2111352020]
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_qe4n8")
 
+[node name="ColorRect2" type="ColorRect" parent="Escenario/Coso5/CollisionShape2D" unique_id=469736270]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -330.0
+offset_right = 31.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Coso3" type="StaticBody2D" parent="Escenario" unique_id=381737816]
-position = Vector2(485, 599)
+position = Vector2(343, 678)
 rotation = 1.5707964
 collision_layer = 65536
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escenario/Coso3" unique_id=224756137]
-position = Vector2(0, -12.5)
+position = Vector2(0, -227.49997)
 shape = SubResource("RectangleShape2D_7pk3x")
 
+[node name="ColorRect3" type="ColorRect" parent="Escenario/Coso3/CollisionShape2D" unique_id=580786612]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.667053
+offset_top = -586.5
+offset_right = 27.575012
+offset_bottom = 569.9735
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Coso4" type="StaticBody2D" parent="Escenario" unique_id=1542615735]
-position = Vector2(485, 166)
+position = Vector2(576, -36)
 rotation = 1.5707964
 collision_layer = 65536
 metadata/_edit_group_ = true
@@ -61,17 +110,18 @@ metadata/_edit_group_ = true
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_7pk3x")
 
-[node name="Mordible" type="Area2D" parent="." unique_id=608969946]
-position = Vector2(179, -25)
-rotation = 1.5707964
-collision_layer = 256
-collision_mask = 0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mordible" unique_id=1657702555]
-position = Vector2(-33, -1)
-shape = SubResource("RectangleShape2D_fworp")
-debug_color = Color(0.65457684, 0.5179122, 0, 0.41960785)
+[node name="ColorRect4" type="ColorRect" parent="Escenario/Coso4/CollisionShape2D" unique_id=711588624]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.556885
+offset_top = -575.5
+offset_right = 26.421051
+offset_bottom = 580.9735
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="shark" parent="." unique_id=1299028078 instance=ExtResource("1_7pk3x")]
 position = Vector2(231, 505)
@@ -82,5 +132,19 @@ position_smoothing_enabled = true
 [node name="Peces" type="Node2D" parent="." unique_id=50292571]
 
 [node name="Fish" parent="Peces" unique_id=527609244 instance=ExtResource("1_fworp")]
-position = Vector2(507, 462)
+position = Vector2(324, 600)
 motion_mode = 0
+
+[node name="Fish2" parent="Peces" unique_id=706682188 instance=ExtResource("1_fworp")]
+position = Vector2(976, 530)
+motion_mode = 0
+
+[node name="Fish3" parent="Peces" unique_id=2053960771 instance=ExtResource("1_fworp")]
+position = Vector2(800, 289)
+motion_mode = 0
+
+[node name="Fish4" parent="Peces" unique_id=747011077 instance=ExtResource("1_fworp")]
+modulate = Color(0, 1, 0.13333344, 1)
+position = Vector2(275, 234)
+motion_mode = 0
+veneno = 1

@@ -4,14 +4,17 @@ extends CharacterBody2D
 @export var speed: Vector2
 @export var speedMargen: Vector2
 
+@export var veneno := 0
+
 @onready var sprite := $AnimatedSprite2D
 
 var areasMordibles: Array[AreaMordible]
 
 func _ready():
-	for a in get_tree().get_nodes_in_group("areaMordible"):
-		a.enBocado.connect(enBoca)
-		a.mordido.connect(mordido)
+	for a in get_children():
+		if a.is_in_group("areaMordible"):
+			a.enBocado.connect(enBoca)
+			a.mordido.connect(mordido)
 	
 	var dir = [-1, +1]
 	var dX = dir.pick_random()
@@ -61,12 +64,17 @@ func rebotar(_c: KinematicCollision2D):
 	
 
 func enBoca():
-	pass
+	if veneno > 0:
+		getPlayer().enfermar()
+		morir()
 	
 func mordido():
-	print("mordido")
 	morir()
 	
 func morir():
 	queue_free()
+	
+
+func getPlayer() -> Shark:
+	return get_tree().get_first_node_in_group("Shark")
 	

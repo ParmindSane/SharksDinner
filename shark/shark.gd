@@ -2,11 +2,15 @@ class_name Shark
 extends CharacterBody2D
 
 @export var speed: Vector2
+var pVelocity: Vector2
+
+@export var startDerecha := true
 var dir := Vector2(1,0)
 var rebotando := false
 
-@onready var sprite := $AnimatedSprite2D
+@export var enfermoDelay := 0.0
 
+@onready var sprite := $AnimatedSprite2D
 @onready var boca := $boca
 
 enum estados {
@@ -19,6 +23,10 @@ var estado = estados.bocaCerrada
 
 func _ready():
 	boca.area_entered.connect(enBocar)
+	
+	if !startDerecha:
+		dir.x = -1
+		scale.x *= -1
 	
 
 func _physics_process(_delta):
@@ -52,14 +60,13 @@ func _physics_process(_delta):
 		dir.y = Input.get_axis("ui_up", "ui_down")
 		velocity = Vector2(speed.x * dir.x, speed.y * dir.y)
 		move_and_collide(Vector2(0, velocity.y * _delta))
-		
-#		Voltear
-		#sprite.flip_h = dir.x < 0
-		#boca.get_child(0).position.x = bocaPos * dir.x
 	
 #	Estar enfermo
 	if estado == estados.enfermo:
 		sprite.play("enfermo")
+		
+		await get_tree().create_timer(enfermoDelay).timeout 
+		estado = estados.bocaCerrada
 		
 #	NO estar enfermo
 	else:
@@ -86,5 +93,9 @@ func enBocar(_a: AreaMordible):
 	_a.enBocar()
 	
 func morder(_a: AreaMordible):
+	print(_a.morder)
 	_a.morder()
+	
+func enfermar():
+	estado = estados.enfermo
 	

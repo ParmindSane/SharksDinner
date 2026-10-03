@@ -37,7 +37,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sau36"]
-radius = 33.0
+radius = 54.00926
 
 [node name="Shark" type="CharacterBody2D" unique_id=873478991 groups=["Parent", "Shark"]]
 collision_mask = 65536
@@ -45,6 +45,7 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_m6wr1")
 speed = Vector2(200, 300)
+enfermoDelay = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847022693]
 rotation = 1.5707964
