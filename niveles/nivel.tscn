@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cni0ebq487ep6" path="res://shark/shark.tscn" id="1_7pk3x"]
 [ext_resource type="PackedScene" uid="uid://dpd13gkjceonr" path="res://comestibles/fish/fish.tscn" id="1_fworp"]
+[ext_resource type="Script" uid="uid://brmjujomwys1" path="res://niveles/nivel.gd" id="1_k5cxp"]
+[ext_resource type="PackedScene" uid="uid://7abldylbkhvb" path="res://niveles/antojo.tscn" id="2_l3kkx"]
+[ext_resource type="Script" uid="uid://cifkavgwnjmaj" path="res://niveles/spawner.gd" id="5_l3kkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(51, 662)
@@ -9,7 +12,38 @@ size = Vector2(51, 662)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pk3x"]
 size = Vector2(51, 1161)
 
-[node name="nivel" type="Node2D" unique_id=292550123]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sau36"]
+size = Vector2(257, 213)
+
+[node name="nivel" type="Node2D" unique_id=292550123 node_paths=PackedStringArray("antojosContainer")]
+script = ExtResource("1_k5cxp")
+antojosContainer = NodePath("UI/Control/Antojos")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1371041288]
+layer = 100
+
+[node name="Control" type="Control" parent="UI" unique_id=916884631]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Antojos" type="PanelContainer" parent="UI/Control" unique_id=308112621]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Antojos" unique_id=1892175212]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Antojo" parent="UI/Control/Antojos/HBoxContainer" unique_id=495739531 node_paths=PackedStringArray("spawner") instance=ExtResource("2_l3kkx")]
+layout_mode = 2
+spawner = NodePath("../../../../../Peces/Spawner")
 
 [node name="Escenario" type="Node2D" parent="." unique_id=1239266727]
 
@@ -127,24 +161,14 @@ grow_vertical = 2
 position = Vector2(231, 505)
 
 [node name="Camera2D" type="Camera2D" parent="shark" unique_id=1237651121]
+zoom = Vector2(0.85, 0.85)
 position_smoothing_enabled = true
 
 [node name="Peces" type="Node2D" parent="." unique_id=50292571]
 
-[node name="Fish" parent="Peces" unique_id=527609244 instance=ExtResource("1_fworp")]
-position = Vector2(324, 600)
-motion_mode = 0
-
-[node name="Fish2" parent="Peces" unique_id=706682188 instance=ExtResource("1_fworp")]
-position = Vector2(976, 530)
-motion_mode = 0
-
-[node name="Fish3" parent="Peces" unique_id=2053960771 instance=ExtResource("1_fworp")]
-position = Vector2(800, 289)
-motion_mode = 0
-
-[node name="Fish4" parent="Peces" unique_id=747011077 instance=ExtResource("1_fworp")]
-modulate = Color(0, 1, 0.13333344, 1)
-position = Vector2(275, 234)
-motion_mode = 0
-veneno = 1
+[node name="Spawner" type="CollisionShape2D" parent="Peces" unique_id=895851567]
+position = Vector2(281, 265)
+shape = SubResource("RectangleShape2D_sau36")
+script = ExtResource("5_l3kkx")
+spawneable = ExtResource("1_fworp")
+maxCantidad = 4

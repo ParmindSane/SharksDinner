@@ -3,10 +3,12 @@ extends CharacterBody2D
 
 @export var speed: Vector2
 @export var speedMargen: Vector2
+@export var speedVenenoso: Vector2
 
 @export var veneno := 0
 
 @onready var sprite := $AnimatedSprite2D
+@export var icon: Texture2D
 
 var areasMordibles: Array[AreaMordible]
 
@@ -15,6 +17,9 @@ func _ready():
 		if a.is_in_group("areaMordible"):
 			a.enBocado.connect(enBoca)
 			a.mordido.connect(mordido)
+	
+	if veneno > 0:
+		speed = speedVenenoso
 	
 	var dir = [-1, +1]
 	var dX = dir.pick_random()
@@ -36,17 +41,6 @@ func getNewVel():
 	var mX = randf_range(-speedMargen.x, +speedMargen.x)
 	var mY = randf_range(-speedMargen.y, +speedMargen.y)
 	return Vector2(speed + Vector2(mX, mY))
-	
-	#var cambiar = [_setX, _setY]
-	#var actual = [sign(velocity.x), sign(velocity.y)]
-	#var dir := [+1, +1]
-	#for i in range(2):
-		#if cambiar[i]:
-			#dir[i] = [+1,-1].pick_random()
-		#else:
-			#dir[i] = actual[i]
-	#
-	#return Vector2((speed.x + speedMargen.x) * dir[0], (speed.y + speedMargen.y) * dir[1])
 	
 
 func choque(_c: KinematicCollision2D):

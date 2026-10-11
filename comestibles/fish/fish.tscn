@@ -13,6 +13,7 @@ radius = 20.0
 script = ExtResource("2_ifpkl")
 speed = Vector2(500, 400)
 speedMargen = Vector2(100, 100)
+speedVenenoso = Vector2(700, 600)
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1233890505]
 position = Vector2(16, 4)
