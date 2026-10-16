@@ -6,10 +6,16 @@ extends CollisionShape2D
 
 @onready var random := RandomNumberGenerator.new()
 
-signal comido(refe)
-
 func _process(delta):
 	if get_children().size() < maxCantidad:
-		var s = spawneable.instantiate()
-		add_child(s)
+		var s: Comestible = spawneable.instantiate()
 		
+		s.s_morir.connect(pezMuerto.bind(s))
+		
+		add_child(s)
+	
+
+signal s_pezMuerto(refe: Comestible)
+func pezMuerto(refe: Comestible):
+	s_pezMuerto.emit(refe)
+	

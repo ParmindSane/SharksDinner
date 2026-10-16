@@ -1,3 +1,4 @@
+@icon("res://shark/assets/shark.png")
 class_name Shark
 extends CharacterBody2D
 
@@ -96,6 +97,6 @@ func morder(_a: AreaMordible):
 	print(_a.morder)
 	_a.morder()
 	
-func enfermar():
+func vomitar():
 	estado = estados.enfermo
 	

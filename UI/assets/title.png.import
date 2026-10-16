@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgw3jse6x7wvq"
-path="res://.godot/imported/underwater.png-6b03f57e66b77c56143ab45cc3b8ddb2.ctex"
+uid="uid://duwjvjsi1uc5n"
+path="res://.godot/imported/title.png-a85452581cf3f19d58d04f62b980319b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/underwater.png"
-dest_files=["res://.godot/imported/underwater.png-6b03f57e66b77c56143ab45cc3b8ddb2.ctex"]
+source_file="res://UI/assets/title.png"
+dest_files=["res://.godot/imported/title.png-a85452581cf3f19d58d04f62b980319b.ctex"]
 
 [params]
 

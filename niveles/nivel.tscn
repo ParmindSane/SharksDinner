@@ -3,8 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cni0ebq487ep6" path="res://shark/shark.tscn" id="1_7pk3x"]
 [ext_resource type="PackedScene" uid="uid://dpd13gkjceonr" path="res://comestibles/fish/fish.tscn" id="1_fworp"]
 [ext_resource type="Script" uid="uid://brmjujomwys1" path="res://niveles/nivel.gd" id="1_k5cxp"]
-[ext_resource type="PackedScene" uid="uid://7abldylbkhvb" path="res://niveles/antojo.tscn" id="2_l3kkx"]
+[ext_resource type="Script" uid="uid://b4okubtbis7oi" path="res://UI/antojos.gd" id="2_l3kkx"]
+[ext_resource type="Script" uid="uid://gv4acos0n0m2" path="res://UI/antojo.gd" id="3_4vuwg"]
 [ext_resource type="Script" uid="uid://cifkavgwnjmaj" path="res://niveles/spawner.gd" id="5_l3kkx"]
+
+[sub_resource type="Resource" id="Resource_4vuwg"]
+script = ExtResource("3_4vuwg")
+cantidad = 5
+spawner = NodePath("../../../Peces/Spawner")
+metadata/_custom_type_script = "uid://gv4acos0n0m2"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(51, 662)
@@ -13,7 +20,7 @@ size = Vector2(51, 662)
 size = Vector2(51, 1161)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sau36"]
-size = Vector2(257, 213)
+size = Vector2(530.5, 641.5)
 
 [node name="nivel" type="Node2D" unique_id=292550123 node_paths=PackedStringArray("antojosContainer")]
 script = ExtResource("1_k5cxp")
@@ -36,14 +43,17 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+script = ExtResource("2_l3kkx")
+antojos = Array[ExtResource("3_4vuwg")]([SubResource("Resource_4vuwg")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Antojos" unique_id=1892175212]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Antojo" parent="UI/Control/Antojos/HBoxContainer" unique_id=495739531 node_paths=PackedStringArray("spawner") instance=ExtResource("2_l3kkx")]
+[node name="Antojo" type="TextureRect" parent="UI/Control/Antojos/HBoxContainer" unique_id=1483122987]
 layout_mode = 2
-spawner = NodePath("../../../../../Peces/Spawner")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Escenario" type="Node2D" parent="." unique_id=1239266727]
 
@@ -167,7 +177,7 @@ position_smoothing_enabled = true
 [node name="Peces" type="Node2D" parent="." unique_id=50292571]
 
 [node name="Spawner" type="CollisionShape2D" parent="Peces" unique_id=895851567]
-position = Vector2(281, 265)
+position = Vector2(272.75, 319.75)
 shape = SubResource("RectangleShape2D_sau36")
 script = ExtResource("5_l3kkx")
 spawneable = ExtResource("1_fworp")
